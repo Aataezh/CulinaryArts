@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Culinary Arts</title>
+
+    <!-- Script Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('assets/img/background-food.jpg');
+            background-size: cover;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            box-sizing: border-box;
+            background-color: #fafafa;
+            font-size: 14px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background-color: #e91e63;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #c2185b;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        /* Centrer le widget reCAPTCHA */
+        .captcha-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <p>Different <span class="highlight">recipes</span> from around the world!</p>
+
+        <!-- Affichage des erreurs -->
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('error') === '1') {
+                document.write('<p class="error-msg">Email ou mot de passe incorrect.</p>');
+            } else if (params.get('error') === 'captcha') {
+                document.write('<p class="error-msg">Veuillez valider le CAPTCHA.</p>');
+            }
+        </script>
+
+        <!-- UNE SEULE balise form -->
+        <form action="LoginController" method="POST">
+
+            <div class="input-group">
+                <input type="text" name="email" placeholder="Enter Email Address" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <!-- Widget reCAPTCHA : remplace VOTRE_SITE_KEY -->
+            <div class="captcha-wrapper">
+                <div class="g-recaptcha" data-sitekey="6LcQDNQsAAAAAN1m65He0R9fywuGmt8vKoX_nEyI"></div>
+            </div>
+
+            <button type="submit" class="btn-login">LOGIN</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

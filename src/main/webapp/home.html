@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Culinary Arts | Marketplace Gastronomique</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            /* Remplacement du fond gaming par un fond culinaire */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url("assets/images/culinary-bg.jpg") center/cover no-repeat;
+            color: #ffffff;
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .countdown div {
+            text-align: center;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 42px;
+            font-weight: bold;
+            color: #e91e63; /* Harmonisation avec la page de login */
+        }
+
+        .countdown small {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #bbbbbb;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            max-width: 260px;
+        }
+
+        .feature h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #e91e63;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: #bbbbbb;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 13px;
+            color: #aaaaaa;
+        }
+    </style>
+    <script>
+    // Date de lancement adaptée au projet
+    const launchDate = new Date("2026-06-01T00:00:00").getTime();
+
+    const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days.toString().padStart(2, "0");
+        document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+
+    }, 1000);
+</script>
+    
+</head>
+
+<body>
+
+<header>
+    <div>👨‍🍳 Culinary Arts</div>
+    <div>contact@culinary-arts.ma</div>
+</header>
+
+<div class="container">
+
+    <h1>L'Excellence Culinaire arrive bientôt</h1>
+
+    <p class="subtitle">
+        La première marketplace où les chefs partagent leur savoir-faire 
+        et où les passionnés de cuisine découvrent des recettes et techniques exclusives. [cite: 262, 263]
+        <br><br>
+    </p>
+
+    <div class="countdown">
+        <div>
+            <span id="days">00</span>
+            <small>JOURS</small>
+        </div>
+        <div>
+            <span id="hours">00</span>
+            <small>HEURES</small>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <small>MINUTES</small>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <small>SECONDES</small>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>🍳 Master Classes</h3>
+            <p>
+                Publiez vos tutoriels vidéo, créez votre école de cuisine en ligne 
+                et développez votre propre brigade numérique.
+            </p>
+        </div>
+
+        <div class="feature">
+            <h3>📖 Recettes Premium</h3>
+            <p>
+                Accédez à des secrets de chefs, des fiches techniques détaillées 
+                et des guides gastronomiques du monde entier.
+            </p>
+        </div>
+
+        <div class="feature">
+            <h3>🌟 Qualité Certifiée</h3>
+            <p>
+                Contenus vérifiés par des experts, paiements sécurisés 
+                et une communauté de passionnés engagés.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Culinary Arts – Projet pédagogique JEE (JSP & Servlets) [cite: 501]
+</footer>
+
+</body>
+</html>
